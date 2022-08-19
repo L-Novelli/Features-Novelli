@@ -1,7 +1,8 @@
-import { useCallback, useState, useReducer } from 'react'
-import { KeyboardAvoidingView, Platform, StyleSheet, View, Text, TouchableOpacity, TextInput, Button, Alert } from "react-native";
+import { Alert, Button, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { login, signup } from '../store/actions/auth.actions';
+import { useCallback, useReducer, useState } from 'react'
+
 import { COLORS } from '../constants/colors';
-import { signup, login } from '../store/actions/auth.actions';
 import { useDispatch } from 'react-redux';
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
@@ -51,9 +52,8 @@ const AuthScreen = () => {
 
     const title = 'REGISTRO',
         message = 'Ya tienes cuenta?',
-        messageAction = 'Ingresar',
-        messageTarget = 'Login';
-
+        messageAction = 'Ingresar';
+        
     const handleSignUp = () => {
         if(formState.formIsValid) {
             dispatch(signup(formState.inputValues.email, formState.inputValues.password));
